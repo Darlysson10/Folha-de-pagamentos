@@ -40,7 +40,8 @@ public class FolhadePagamentos
         dados_backup = new Double[100][15];
         endereco_backup = new String[100];
         
-        
+        String pularlinha;
+
        //Backup para salvar os dados antes do undo
         String[] nomes_antes_undo = new String[100];
         String[] endereco_antes_undo = new String[100];
@@ -84,9 +85,11 @@ public class FolhadePagamentos
         int id = 0;
         while (menus != 0) 
         {
-            System.out.println("\nO que deseja fazer?\n\n1 - Adicionar empregado\n2 - Remover empregado\n3 - Lancar cartao de ponto\n4 - Lancar resultado de venda\n5 -  Lancar uma taxa de servico\n6 - Alterar detalhes de um empregado\n7 - Rodar a folha de pagamento para hoje\n8 - Desfazer/Refazer\n9 - Agendada de pagamentos\n10 - Criar nova agenda de pagamento\n0 - Encerrar");
+            System.out.println("\nO que deseja fazer?\n\n1 - Adicionar empregado\n2 - Remover empregado\n3 - Lancar cartao de ponto\n4 - Lancar resultado de venda\n5 -  Lancar uma taxa de servico\n6 - Alterar detalhes de um empregado\n7 - Rodar a folha de pagamento para hoje\n8 - Desfazer/Refazer\n9 - Agenda de pagamentos\n10 - Criar nova agenda de pagamento\n0 - Encerrar");
 
             menus = menu.nextInt();
+            pularlinha = menu.nextLine();
+            
             if (menus == 0) System.out.println("Encerrado");
             if (menus == 1) 
             {
@@ -96,7 +99,12 @@ public class FolhadePagamentos
                     if (dados[id][11] == 1.0)
                     {
                 
-                    
+                    	if (inputs > 0) 
+                    	{
+                    		System.out.println("\nEnter."); 
+                    		pularlinha = input2.nextLine();
+                    	}
+                    		
                         System.out.println("Digite o nome do empregado");
                         nomes[id] = input2.nextLine();
                     
@@ -168,6 +176,7 @@ public class FolhadePagamentos
                 
                 System.out.println("Digite o numero do empregado que desejas remover:");
                 usuario = input.nextInt();
+                pularlinha = input.nextLine();
                 ids1[i1] = usuario;
                 if (dados[usuario][11] == 0.0)
                 {
@@ -203,6 +212,7 @@ public class FolhadePagamentos
                 
                 System.out.println("Digite o numero de identificacao do empregado:");
                 id2 = input.nextInt();
+                pularlinha = input.nextLine();
                 ids2[i2] = id2;
                 if(dados[id2][0] == 1)
                 {
@@ -244,6 +254,7 @@ public class FolhadePagamentos
                 System.out.println("Digite o numero de identificacao do empregado:");
                 int diavenda,mesvenda,anovenda;
                 id3 = input.nextInt();
+                pularlinha = input.nextLine();
                 ids3[i3] = id3;
                 if (dados[id3][0] == 3)
                 {
@@ -272,6 +283,7 @@ public class FolhadePagamentos
                 double taxa_servico;
                 System.out.println("Digite o numero de identificacao do empregado:");
                 id4 = input.nextInt();
+                pularlinha = input.nextLine();
                 ids4[i4] = id4;
                 if (dados[id4][4] == 1)
                 {   
@@ -295,6 +307,7 @@ public class FolhadePagamentos
                 System.out.println("Digite o numero de identificacao do empregado:");
                 
                 id5 = input.nextInt();
+                pularlinha = input.nextLine();
                 ids5[i5] = id5;
 
                 
@@ -369,6 +382,7 @@ public class FolhadePagamentos
                
 
                 System.out.println("Dados do empregado alterados com sucesso");
+                pularlinha = input.nextLine();
                 input_anterior[inputs] = menus;
                 inputs++;
                 i5++;
@@ -468,6 +482,7 @@ public class FolhadePagamentos
                 //System.out.printf("acao anterior: %d\n",input_anterior[inputs-1]);
                 System.out.println("Pressione 1 para desfazer ou 2 para refazer");
                 action = input.nextInt();
+                pularlinha = input.nextLine();
                 
                 if (action == 1)
                 {
